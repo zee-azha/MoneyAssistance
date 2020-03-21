@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/action_income"
+        android:icon="@drawable/ic_local_atm_black_24dp"
+        android:title="@string/title_income" />
+
+    <item
+        android:id="@+id/action_expense"
+        android:icon="@drawable/ic_send_black_24dp"
+        android:title="@string/title_expense"/>
+
+    <item
+        android:id="@+id/action_menu"
+        android:icon="@drawable/ic_view_list_black_24dp"
+        android:title="@string/title_menu"/>
+    <item
+        android:id="@+id/action_info"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/title_info"/>
+</menu>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".expense">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXPENSE"
+            android:textSize="34dp"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="14dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/putih"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="669dp"
+        android:orientation="vertical"
+        android:paddingTop="100dp">
+
+        <TextView
+            android:id="@+id/iddate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:inputType="date" />
+        <Button
+            android:id="@+id/setDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="DATE"/>
+
+        <TextView
+            android:id="@+id/nominal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amount" />
+
+        <EditText
+            android:id="@+id/setAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/Note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Note" />
+
+        <EditText
+            android:id="@+id/setNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/Reciept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reciept" />
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/foto"
+            android:layout_width="200dp"
+            android:layout_height="140dp" >
+        </ImageView>
+
+    <Button
+        android:layout_width="67dp"
+        android:layout_height="67dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="50dp"
+       android:background="@drawable/ic_add_a_photo_black_24dp"
+        android:id="@+id/take"></Button>
+</RelativeLayout>
+
+        <Button
+
+            android:id="@+id/save"
+            android:background="@drawable/btn"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:layout_width="182dp"
+            android:layout_height="67dp"
+            android:text="Save Transaction"></Button>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@drawable/color_state"
+            app:itemTextColor="@drawable/color_state"
+            app:menu="@menu/bottom_nav_menu" />
+
+        <FrameLayout
+            android:id="@+id/fl_container"
+            android:layout_width="match_parent"
+            android:layout_height="669dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    </RelativeLayout>
+</RelativeLayout>
