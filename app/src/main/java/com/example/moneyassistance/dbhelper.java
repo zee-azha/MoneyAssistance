@@ -52,43 +52,11 @@ public class dbhelper extends SQLiteOpenHelper {
 
     }
 
-    public Cursor readAllIncome() {
-        SQLiteDatabase db = getReadableDatabase();
-        return db.query(
-                Contract.TransactionEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
-    }
 
-    public boolean addIncome(Utils utils) {
-        SQLiteDatabase db = getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(Contract.TransactionEntry.COLUMN_DATE , utils.getDate());
-        values.put(Contract.TransactionEntry.COLUMN_AMOUNT , utils.getAmount());
-        values.put(Contract.TransactionEntry.COLUMN_SUBJECT , utils.getSubject());
-        values.put(Contract.TransactionEntry.COLUMN_Reciept , utils.getImageAsString());
-
-        return db.insert(Contract.TransactionEntry.TABLE_NAME, null, values) != -1;
-    }
-    public boolean addExpense(Utils2 utils) {
-        SQLiteDatabase db = getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(Contract.TransactionEntry.COLUMN_DATE , utils.getDate());
-        values.put(Contract.TransactionEntry.COLUMN_AMOUNT , utils.getAmount());
-        values.put(Contract.TransactionEntry.COLUMN_SUBJECT , utils.getSubject());
-        values.put(Contract.TransactionEntry.COLUMN_Reciept , utils.getImageAsString());
-
-        return db.insert(Contract.TransactionEntry.TABLE_NAME2, null, values) != -1;
-    }
 public void insertIncome(String date,String amount,String subject,byte[] reciept){
         SQLiteDatabase db = getWritableDatabase();
-        String sql ="INSERT INTO INCOME VAlUES(null,?,?,?,?)";
+        String sql ="INSERT INTO Income VAlUES(null,?,?,?,?)";
     SQLiteStatement statement = db.compileStatement(sql);
     statement.clearBindings();
     statement.bindString(1,date);
@@ -98,4 +66,74 @@ public void insertIncome(String date,String amount,String subject,byte[] reciept
     statement.executeInsert();
 
 }
+    public void insertExpense(String date,String amount,String subject,byte[] reciept){
+        SQLiteDatabase db = getWritableDatabase();
+        String sql ="INSERT INTO Expense VAlUES(null,?,?,?,?)";
+        SQLiteStatement statement = db.compileStatement(sql);
+        statement.clearBindings();
+        statement.bindString(1,date);
+        statement.bindString(2,amount);
+        statement.bindString(3,subject);
+        statement.bindBlob(4,reciept);
+        statement.executeInsert();
+
+    }
+    public Cursor DisplayIncome() {
+        SQLiteDatabase database = getWritableDatabase();
+        String[] columns = new String[] { "_id", "date","amount","subject"};
+        Cursor cursor = database.query(Contract.TransactionEntry.TABLE_NAME,columns,null,null,null,null,null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor DisplayExpense() {
+        SQLiteDatabase database = getWritableDatabase();
+        String[] columns = new String[] { "_id", "date","amount","subject"};
+        Cursor cursor = database.query(Contract.TransactionEntry.TABLE_NAME2,columns,null,null,null,null,null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor getData(String Id){
+        SQLiteDatabase database = getWritableDatabase();
+        return database.rawQuery("Select*from Income where _id=?",new String[]{Id});
+    }
+    public int Update_Income(String Id,String date,String amount,String subject) {
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("date", date);
+        contentValues.put("amount", amount);
+        contentValues.put("subject", subject);
+        int i = database.update("Income", contentValues,
+                "_id"+ " = " +Id, null);
+        return i;
+    }
+    public void Delete_Income(String Id) {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete("Income", "_id" + "="
+                + Id, null);
+    }
+    public Cursor getDataex(String Id){
+        SQLiteDatabase database = getWritableDatabase();
+        return database.rawQuery("Select*from Expense where _id=?",new String[]{Id});
+    }
+    public int Update_Expense(String Id,String date,String amount,String subject) {
+        SQLiteDatabase database = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put("date", date);
+        contentValues.put("amount", amount);
+        contentValues.put("subject", subject);
+        int i = database.update("Expense", contentValues,
+                "_id"+ " = " +Id, null);
+        return i;
+    }
+    public void Delete_Expense(String Id) {
+        SQLiteDatabase database = getWritableDatabase();
+        database.delete("Expense", "_id" + "="
+                + Id, null);
+    }
 }

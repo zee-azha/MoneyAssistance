@@ -27,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -104,11 +105,23 @@ public class expense extends AppCompatActivity implements BottomNavigationView.O
                 }
             }
             public void saveDB(View view) {
-                String amn = amount.getText().toString();
-                String strdate = Date.getText().toString();
-                String not = note.getText().toString();
-                Bitmap image = ((BitmapDrawable) cam.getDrawable()).getBitmap();
-                Dbhelper.addExpense(new Utils2(strdate, amn, not, image));
+                try {
+                    Dbhelper.insertExpense(
+                            tanggal.getText().toString().trim(),
+                            nilai.getText().toString().trim(),
+                            note.getText().toString().trim(),
+                            imageToByte(cam)
+                    ); Toast.makeText(getApplicationContext(),"ADD Income success",Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+            private byte[] imageToByte(ImageView image) {
+                Bitmap bitmap =((BitmapDrawable)image.getDrawable()).getBitmap();
+                ByteArrayOutputStream stream =new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG,100, stream);
+                byte[] byteArray = stream.toByteArray();
+                return byteArray;
             }
         });
         setdate.setOnClickListener(new View.OnClickListener() {

@@ -7,7 +7,7 @@
     tools:context=".Income">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:background="@color/colorPrimary"
         >
@@ -24,55 +24,74 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="669dp"
         android:orientation="vertical"
-        android:paddingTop="100dp">
-
-        <TextView
-            android:id="@+id/iddate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date" />
-
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:editable="false"
-            android:inputType="date" />
-        <Button
-            android:id="@+id/setDate"
+        android:paddingTop="70dp">
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="wrap_content">
 
-            android:text="DATE"/>
+            <TextView
+                android:id="@+id/iddate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="@color/item"
+                android:textSize="24dp" />
 
+            <EditText
+                android:textColor="@color/item"
+                android:layout_marginTop="30dp"
+                android:id="@+id/date"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                />
+            <Button
+                android:textColor="@color/item"
+                android:id="@+id/setDate"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="220dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_date_range_black_24dp"
+                />
+        </RelativeLayout>
         <TextView
+            android:textColor="@color/item"
+            android:textSize="24dp"
             android:id="@+id/nominal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Amount" />
 
         <EditText
+            android:textColor="@color/item"
             android:id="@+id/setAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number" />
 
         <TextView
+            android:textColor="@color/item"
+            android:textSize="24dp"
             android:id="@+id/Note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Note" />
 
         <EditText
+            android:textColor="@color/item"
             android:id="@+id/setNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text" />
 
         <TextView
+            android:textColor="@color/item"
+            android:textSize="24dp"
             android:id="@+id/Reciept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -99,7 +118,7 @@
 
             android:id="@+id/save"
             android:background="@drawable/btn"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="100dp"
             android:layout_width="182dp"
             android:layout_height="67dp"

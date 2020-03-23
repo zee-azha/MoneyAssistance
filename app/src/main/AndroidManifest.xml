@@ -3,6 +3,7 @@
     package="com.example.moneyassistance">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,15 +11,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".expense"></activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main"></activity>
-        <activity android:name=".Income">
+        <activity android:name=".Expense_form"
+            android:screenOrientation="portrait">
 
 
         </activity>
-        <activity android:name=".splashscreen">
+        <activity android:name=".View_Expense"
+
+            android:screenOrientation="portrait"/>
+        <activity android:name=".List_Expense" />
+        <activity android:name=".ViewForm" />
+        <activity android:name=".List_Income" />
+        <activity android:name=".View_Income" />
+        <activity android:name=".expense" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Income"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".splashscreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

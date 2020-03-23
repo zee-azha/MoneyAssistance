@@ -52,16 +52,9 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
     public static final int REQUEST_CODE_GALLERY = 002;
     private ImageView cam;
     private DatePickerDialog datePickerDialog;
-    private DatePicker datePicker;
-    private Button pict;
-    private Calendar calendar,calendar1;
-    private int year, month, day;
     private Button setdate;
     TextView Date;
-  private dbhelper Dbhelper;
-
-
-    private Uri selectedImageUri;
+    private dbhelper Dbhelper;
     private SimpleDateFormat dateFormatter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +94,7 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                     Toast.makeText(getApplicationContext(), "Please Insert Reciept picture ", Toast.LENGTH_LONG).show();
                 }
                 else {
-                    saveImageInDB(view);
+                    saveDB(view);
 
                     nilai.setText(null);
                     tanggal.setText(null);
@@ -109,7 +102,7 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                     cam.setImageResource(0);
                 }
                 }
-            public void saveImageInDB(View view){
+            public void saveDB(View view){
 
                 try {
                     Dbhelper.insertIncome(
@@ -121,13 +114,6 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-//                String amn = amount.getText().toString();
-//                String strdate =Date.getText().toString();
-//                String not = note.getText().toString();
-//                   // Bitmap bitmap =((BitmapDrawable)cam.getDrawable()).getBitmap();
-//                    imageToByte(cam);
-//    //                   Dbhelper.addIncome(new Utils(strdate,amn,not,image));
-//                    Dbhelper.insertIncome(strdate,amn,not,bitmap);
                }
 
            private byte[] imageToByte(ImageView image) {
@@ -233,6 +219,8 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
         }
         return loadFragment(fragment);
     }
+    //Date function
+
     private void showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {

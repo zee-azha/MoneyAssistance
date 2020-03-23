@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -14,22 +17,40 @@ import androidx.fragment.app.Fragment;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+    private Button income;
+    private Button expense;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+        income = (Button) findViewById(R.id.income);
+        expense = (Button) findViewById(R.id.expense);
 
         //loading the default fragment
-
         loadFragment(new frame_menu());
-
         //getting bottom navigation view and attaching the listener
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(this);
         Menu menu = navigation.getMenu();
         MenuItem menuItem =menu.getItem(2);
         menuItem.setChecked(true);
+        income.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pindah = new Intent(MainActivity.this, List_Income.class);
+                startActivity(pindah);
+                finish();
+            }
+        });
+        expense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pindah = new Intent(MainActivity.this, List_Expense.class);
+                startActivity(pindah);
+                finish();
+            }
+        });
     }
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
