@@ -2,14 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="88dp"
+        android:orientation="vertical"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="8dp">
+
         <TextView
             android:id="@+id/number"
             android:layout_width="wrap_content"
@@ -17,35 +21,41 @@
             android:layout_gravity="right"
             android:layout_marginTop="-20dp"
             android:text="id"
+
             android:visibility="invisible" />
 
         <TextView
-            android:textColor="@color/item"
-            android:fontFamily="sans-serif"
             android:id="@+id/date"
+            android:layout_marginTop="-20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
+            android:fontFamily="sans-serif"
             android:text="Date"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textSize="18dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/item" />
 
         <TextView
-            android:textColor="@color/item"
-            android:fontFamily="sans-serif"
             android:id="@+id/amount"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
-            android:text="Amount " />
+            android:fontFamily="sans-serif"
+            android:text="Amount "
+            android:textSize="18dp"
+            android:textColor="@color/item" />
 
         <TextView
-            android:textColor="@color/item"
-            android:fontFamily="sans-serif"
             android:id="@+id/subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical"
-            android:text="Subject" />
+            android:fontFamily="sans-serif"
+            android:text="Subject"
+            android:textSize="18dp"
+            android:textColor="@color/item" />
 
         <ImageView
             android:id="@+id/reciept"
@@ -54,5 +64,5 @@
             android:visibility="invisible" />
 
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

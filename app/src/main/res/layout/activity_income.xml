@@ -14,12 +14,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INCOME"
+            android:text="Income"
             android:textSize="34dp"
             android:fontFamily="sans-serif"
             android:paddingLeft="14dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:layout_gravity="center|center_horizontal"
             android:textColor="@color/putih"/>
     </LinearLayout>
 
@@ -33,21 +34,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/iddate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Date"
-                android:textColor="@color/item"
-                android:textSize="24dp" />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:textColor="@color/item"
                 android:layout_marginTop="30dp"
                 android:id="@+id/date"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:editable="false"
+                android:textSize="18dp"
+                android:hint="Insert Date"
+                app:met_floatingLabel="highlight"
                 />
             <Button
                 android:textColor="@color/item"
@@ -59,43 +56,30 @@
                 android:background="@drawable/ic_date_range_black_24dp"
                 />
         </RelativeLayout>
-        <TextView
-            android:textColor="@color/item"
-            android:textSize="24dp"
-            android:id="@+id/nominal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Amount" />
 
-        <EditText
+
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:textColor="@color/item"
             android:id="@+id/setAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number"
+            android:hint="Insert Amount"
+            android:textSize="18dp"
+            app:met_floatingLabel="highlight"/>
 
-        <TextView
-            android:textColor="@color/item"
-            android:textSize="24dp"
-            android:id="@+id/Note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Note" />
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:textColor="@color/item"
             android:id="@+id/setNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textSize="18dp"
+            android:hint="Insert Note"
+            app:met_floatingLabel="highlight"/>
 
-        <TextView
-            android:textColor="@color/item"
-            android:textSize="24dp"
-            android:id="@+id/Reciept"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reciept" />
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -110,19 +94,21 @@
                 android:layout_height="67dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="50dp"
+
                 android:background="@drawable/ic_add_a_photo_black_24dp"
                 android:id="@+id/take"></Button>
         </RelativeLayout>
 
         <Button
-
+            android:textSize="30dp"
             android:id="@+id/save"
+            android:textColor="@color/putih"
             android:background="@drawable/btn"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="100dp"
-            android:layout_width="182dp"
+            android:layout_marginLeft="120dp"
+            android:layout_width="150dp"
             android:layout_height="67dp"
-            android:text="Save Transaction"></Button>
+            android:text="Save"></Button>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"

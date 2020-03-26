@@ -10,5 +10,8 @@ public class Contract {
         public static final String COLUMN_AMOUNT = "amount";
         public static final String COLUMN_SUBJECT = "subject";
         public static final String COLUMN_Reciept = "reciept";
+
+        public static final String month ="";
+        public static final String ORDERBY="strftime("+month+",date)";
     }
 }

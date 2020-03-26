@@ -51,7 +51,9 @@ public class dbhelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
     }
-
+public void open(){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+}
 
 
 public void insertIncome(String date,String amount,String subject,byte[] reciept){
@@ -81,16 +83,19 @@ public void insertIncome(String date,String amount,String subject,byte[] reciept
     public Cursor DisplayIncome() {
         SQLiteDatabase database = getWritableDatabase();
         String[] columns = new String[] { "_id", "date","amount","subject"};
-        Cursor cursor = database.query(Contract.TransactionEntry.TABLE_NAME,columns,null,null,null,null,null);
+        Cursor cursor = database.query(Contract.TransactionEntry.TABLE_NAME,columns,null,null,null,null,"date DESC");
         if (cursor != null) {
             cursor.moveToFirst();
         }
         return cursor;
+
+
     }
+
     public Cursor DisplayExpense() {
         SQLiteDatabase database = getWritableDatabase();
         String[] columns = new String[] { "_id", "date","amount","subject"};
-        Cursor cursor = database.query(Contract.TransactionEntry.TABLE_NAME2,columns,null,null,null,null,null);
+        Cursor cursor = database.query(Contract.TransactionEntry.TABLE_NAME2,columns,null,null,null,null,"date DESC");
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -118,7 +123,7 @@ public void insertIncome(String date,String amount,String subject,byte[] reciept
     }
     public Cursor getDataex(String Id){
         SQLiteDatabase database = getWritableDatabase();
-        return database.rawQuery("Select*from Expense where _id=?",new String[]{Id});
+        return database.rawQuery("Select*from Expense where _id=? ",new String[]{Id});
     }
     public int Update_Expense(String Id,String date,String amount,String subject) {
         SQLiteDatabase database = getWritableDatabase();
@@ -135,5 +140,27 @@ public void insertIncome(String date,String amount,String subject,byte[] reciept
         SQLiteDatabase database = getWritableDatabase();
         database.delete("Expense", "_id" + "="
                 + Id, null);
+    }
+    public Cursor Report(){
+        SQLiteDatabase database = getWritableDatabase();
+
+        Cursor  cursor = database.rawQuery("SELECT strftime('%m-%Y',date) ,_id from Income Group By strftime('%m-%Y',date)",null);
+        if (cursor != null) {
+
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+    public Cursor ReportIncome(String strf){
+        SQLiteDatabase database = getWritableDatabase();
+
+        return database.rawQuery("SELECT strftime('%m-%Y',date) ,sum(amount)  from Income where strftime('%m-%Y',date) =? ",new String[]{strf});
+
+    }
+    public Cursor ReportExpense(String strf){
+        SQLiteDatabase database = getWritableDatabase();
+
+        return database.rawQuery("SELECT strftime('%m-%Y',date) ,sum(amount) from Expense where strftime('%m-%Y',date) =? ",new String[]{strf});
+
     }
 }

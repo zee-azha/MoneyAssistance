@@ -3,6 +3,7 @@ package com.example.moneyassistance;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ import android.widget.Toast;
 import java.util.Calendar;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class Income extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     EditText nilai;
@@ -55,7 +58,8 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
     private Button setdate;
     TextView Date;
     private dbhelper Dbhelper;
-    private SimpleDateFormat dateFormatter;
+    private SimpleDateFormat dateFormatter, format;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,37 +67,38 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
         //loading the default fragment
         loadFragment(new frame_income());
         //declare
+
         tanggal = (EditText) findViewById(R.id.date);
-        nilai =(EditText) findViewById(R.id.setAmount);
+        nilai = (EditText) findViewById(R.id.setAmount);
         catat = (EditText) findViewById(R.id.setNote);
         Date = (TextView) findViewById(R.id.date);
-        amount =(TextView)findViewById(R.id.setAmount);
-        note = (TextView)findViewById(R.id.setNote);
-        cam =(ImageView) findViewById(R.id.foto);
+        amount = (TextView) findViewById(R.id.setAmount);
+        note = (TextView) findViewById(R.id.setNote);
+        cam = (ImageView) findViewById(R.id.foto);
         Dbhelper = new dbhelper(this);
-        trans=(Button)findViewById(R.id.save);
-        take=(Button)findViewById(R.id.take);
-        setdate=(Button)findViewById(R.id.setDate);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        trans = (Button) findViewById(R.id.save);
+        take = (Button) findViewById(R.id.take);
+        setdate = (Button) findViewById(R.id.setDate);
+        dateFormatter = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
         //Navigation
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(this);
         Menu menu = navigation.getMenu();
-        MenuItem menuItem =menu.getItem(0);
+        MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
-       trans.setOnClickListener(new View.OnClickListener() {
+
+        trans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(tanggal.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Please Insert Date",Toast.LENGTH_LONG).show();
-                }else if (nilai.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Please Insert Amount ",Toast.LENGTH_LONG).show();
-                }else if (note.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please Insert Note ", Toast.LENGTH_LONG).show();
-                }else if (cam.getDrawable()==null){
-                    Toast.makeText(getApplicationContext(), "Please Insert Reciept picture ", Toast.LENGTH_LONG).show();
-                }
-                else {
+                if (tanggal.getText().toString().isEmpty()) {
+                    Toasty.info(getApplicationContext(), "Please Insert Date", Toast.LENGTH_SHORT, true).show();
+                } else if (nilai.getText().toString().isEmpty()) {
+                    Toasty.info(getApplicationContext(), "Please Insert Amount", Toast.LENGTH_SHORT, true).show();
+                } else if (note.getText().toString().isEmpty()) {
+                    Toasty.info(getApplicationContext(), "Please Insert Note", Toast.LENGTH_SHORT, true).show();
+                } else if (cam.getDrawable() == null) {
+                    Toasty.info(getApplicationContext(), "Please take a picture.", Toast.LENGTH_SHORT, true).show();
+                } else {
                     saveDB(view);
 
                     nilai.setText(null);
@@ -101,8 +106,9 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                     note.setText(null);
                     cam.setImageResource(0);
                 }
-                }
-            public void saveDB(View view){
+            }
+
+            public void saveDB(View view) {
 
                 try {
                     Dbhelper.insertIncome(
@@ -110,20 +116,21 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                             nilai.getText().toString().trim(),
                             note.getText().toString().trim(),
                             imageToByte(cam)
-                    ); Toast.makeText(getApplicationContext(),"ADD Income success",Toast.LENGTH_LONG).show();
-                }catch (Exception e){
+                    );
+                    Toasty.success(getApplicationContext(), "Success!", Toast.LENGTH_SHORT, true).show();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-               }
+            }
 
-           private byte[] imageToByte(ImageView image) {
-                Bitmap bitmap =((BitmapDrawable)image.getDrawable()).getBitmap();
-               ByteArrayOutputStream stream =new ByteArrayOutputStream();
-               bitmap.compress(Bitmap.CompressFormat.PNG,100, stream);
-               byte[] byteArray = stream.toByteArray();
-               return byteArray;
-           }
-       });
+            private byte[] imageToByte(ImageView image) {
+                Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                return byteArray;
+            }
+        });
         setdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,10 +141,11 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
         take.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               setRequestImage();
+                setRequestImage();
             }
         });
     }
+
     private void setRequestImage() {
         CharSequence[] item = {"Kamera", "Galeri"};
         AlertDialog.Builder request = new AlertDialog.Builder(this)
@@ -165,6 +173,7 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
         request.create();
         request.show();
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -183,17 +192,19 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
             cam.setImageBitmap(imageBitmap);
         }
     }
-//fragment function
-            private boolean loadFragment(Fragment fragment) {
+
+    //fragment function
+    private boolean loadFragment(Fragment fragment) {
         //switching fragment
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fl_container,fragment )
+                    .replace(R.id.fl_container, fragment)
                     .commit();
             return true;
         }
         return false;
     }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
@@ -203,25 +214,28 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                 break;
             case R.id.action_expense:
                 fragment = new frame_expense();
-                Intent actexpense = new Intent(Income.this,expense.class);
+                Intent actexpense = new Intent(Income.this, expense.class);
                 startActivity(actexpense);
                 finish();
                 break;
             case R.id.action_menu:
                 fragment = new frame_menu();
-                Intent acthome = new Intent(Income.this,MainActivity.class);
+                Intent acthome = new Intent(Income.this, MainActivity.class);
                 startActivity(acthome);
                 finish();
                 break;
             case R.id.action_info:
                 fragment = new frame_info();
+                Intent actinrep = new Intent(Income.this, Show_report.class);
+                startActivity(actinrep);
+                finish();
                 break;
         }
         return loadFragment(fragment);
     }
     //Date function
 
-    private void showDateDialog(){
+    private void showDateDialog() {
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
 
@@ -230,9 +244,10 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
                 Date.setText(dateFormatter.format(newDate.getTime()));
+
             }
 
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
 }

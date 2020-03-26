@@ -76,7 +76,7 @@ public class expense extends AppCompatActivity implements BottomNavigationView.O
         trans = (Button) findViewById(R.id.save);
         take = (Button) findViewById(R.id.take);
         setdate = (Button) findViewById(R.id.setDate);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
         //Navigation
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(this);
@@ -233,6 +233,9 @@ public class expense extends AppCompatActivity implements BottomNavigationView.O
                 break;
             case R.id.action_info:
                 fragment = new frame_info();
+                Intent actinrep = new Intent(expense.this, Show_report.class);
+                startActivity(actinrep);
+                finish();
                 break;
         }
         return loadFragment(fragment);

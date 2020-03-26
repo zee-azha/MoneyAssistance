@@ -11,14 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Expense_form"
-            android:screenOrientation="portrait">
-
-
-        </activity>
-        <activity android:name=".View_Expense"
-
-            android:screenOrientation="portrait"/>
+        <activity android:name=".TableReport"></activity>
+        <activity android:name=".monthly" />
+        <activity android:name=".Show_report" />
+        <activity
+            android:name=".Expense_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View_Expense"
+            android:screenOrientation="portrait" />
         <activity android:name=".List_Expense" />
         <activity android:name=".ViewForm" />
         <activity android:name=".List_Income" />
@@ -27,10 +28,12 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".Income"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".splashscreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Income"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".splashscreen"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

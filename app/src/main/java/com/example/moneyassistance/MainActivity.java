@@ -13,19 +13,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    private Button income;
-    private Button expense;
+     CardView income;
+    CardView expense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        income = (Button) findViewById(R.id.income);
-        expense = (Button) findViewById(R.id.expense);
+      income = (CardView) findViewById(R.id.income);
+        expense = (CardView) findViewById(R.id.expense);
 
         //loading the default fragment
         loadFragment(new frame_menu());
@@ -89,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.action_info:
                 fragment = new frame_info();
+                Intent actinrep = new Intent(MainActivity.this, Show_report.class);
+                startActivity(actinrep);
+                finish();
+
                 break;
         }
 

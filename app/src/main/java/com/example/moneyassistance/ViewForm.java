@@ -18,10 +18,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 import java.io.ByteArrayInputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ViewForm extends AppCompatActivity {
 private dbhelper DbHelper;
@@ -44,12 +48,12 @@ private DatePickerDialog datePickerDialog;
         Date = (EditText) findViewById(R.id.date);
         Amount = (EditText) findViewById(R.id.setAmount);
         Subject = (EditText) findViewById(R.id.setNote);
-        Reciept = (ImageView) findViewById(R.id.foto);
+        PhotoView photoView = (PhotoView) findViewById(R.id.photo_view);;
         Back = (ImageView) findViewById(R.id.back);
         setdate =(Button) findViewById(R.id.setDate);
         Edit =(Button) findViewById(R.id.edit);
         Delete =(Button) findViewById(R.id.delete);
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
         DbHelper.getReadableDatabase();
         Intent intent = getIntent();
         String num = intent.getStringExtra("_id");
@@ -65,7 +69,7 @@ private DatePickerDialog datePickerDialog;
             Date.setText(date);
             Amount.setText(amount);
             Subject.setText(subject);
-            Reciept.setImageBitmap(bitmap);
+            photoView.setImageBitmap(bitmap);
         }
 
         Edit.setOnClickListener(new View.OnClickListener() {
@@ -114,56 +118,84 @@ private DatePickerDialog datePickerDialog;
     }
 
     public void onEditPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setMessage("Are you sure you want to change income data?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String subject = Subject.getText().toString();
-                String amount = Amount.getText().toString();
-                String date = Date.getText().toString();
-                DbHelper.Update_Income(Id,date,amount,subject);
-                Toast.makeText(getApplicationContext(), "The Income Data had changed", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ViewForm.this,List_Income.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Are you sure?")
+                .setContentText("Data will edited")
+                .setCancelText("No")
+                .setConfirmText("Yes")
+                .showCancelButton(true)
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        String subject = Subject.getText().toString();
+                        String amount = Amount.getText().toString();
+                        String date = Date.getText().toString();
+                        DbHelper.Update_Income(Id, date, amount, subject);
+                        new SweetAlertDialog(ViewForm.this,SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Edit Successfully")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
 
-                dialog.cancel();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
+                                        Intent c = new Intent(ViewForm.this, List_Income.class);
+                                        c.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        c.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(c);
+                                        finish();
+
+                                    }
+                                })
+                                .show();
+                    }
+                }).show();
+
     }
+
 
 
     public void onDelPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(false);
-        builder.setMessage("Are you sure you want to Delete income data?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Are you sure?")
+                .setContentText("Data will Delete")
+                .setCancelText("No")
+                .setConfirmText("Yes")
+                .showCancelButton(true)
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
                 DbHelper.Delete_Income(Id);
-                Intent intent = new Intent(ViewForm.this,List_Income.class);
-                Toast.makeText(getApplicationContext(), "The Income Data had Delete", Toast.LENGTH_LONG).show();
-                startActivity(intent);
-                finish();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+                        new SweetAlertDialog(ViewForm.this,SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Deleted had Successfully")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
 
-                dialog.cancel();
+                                        Intent c = new Intent(ViewForm.this, List_Income.class);
+                                        c.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        c.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(c);
+                                        finish();
+
+                                    }
+                                })
+                                .show();
+                    }
+                }).show();
+
             }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-}
+        }
+
+
+

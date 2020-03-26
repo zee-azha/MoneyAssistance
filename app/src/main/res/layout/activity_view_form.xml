@@ -41,87 +41,66 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/iddate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Date"
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:textColor="@color/item"
-                android:textSize="24dp" />
-
-            <EditText
+                android:layout_marginTop="30dp"
                 android:id="@+id/date"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:editable="false"
-                android:textColor="@color/item" />
-
+                android:hint="Insert Date"
+                app:met_floatingLabel="highlight"
+                />
             <Button
+                android:textColor="@color/item"
                 android:id="@+id/setDate"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="220dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="220dp"
-                android:layout_marginTop="25dp"
                 android:background="@drawable/ic_date_range_black_24dp"
-                android:textColor="@color/item" />
+                />
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/nominal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Amount"
-            android:textColor="@color/item"
-            android:textSize="24dp" />
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:textColor="@color/item"
             android:id="@+id/setAmount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:textColor="@color/item" />
+            android:hint="Insert Amount"
+            app:met_floatingLabel="highlight"/>
 
-        <TextView
-            android:id="@+id/Note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Note"
+
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:textColor="@color/item"
-            android:textSize="24dp" />
-
-        <EditText
             android:id="@+id/setNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:textColor="@color/item" />
+            android:hint="Insert Note"
+            app:met_floatingLabel="highlight"/>
 
-        <TextView
-            android:id="@+id/Reciept"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reciept"
-            android:textColor="@color/item"
-            android:textSize="24dp" />
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/foto"
-                android:layout_width="303dp"
-                android:layout_height="135dp"
-                android:layout_marginLeft="50dp"></ImageView>
+            <com.github.chrisbanes.photoview.PhotoView
+                android:id="@+id/photo_view"
+                android:layout_width="398dp"
+                android:layout_height="244dp" />
+
 
         </RelativeLayout>
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <Button
+                android:textColor="@color/putih"
                 android:id="@+id/edit"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
@@ -132,6 +111,7 @@
                 android:textSize="30dp"></Button>
 
             <Button
+                android:textColor="@color/putih"
                 android:id="@+id/delete"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
