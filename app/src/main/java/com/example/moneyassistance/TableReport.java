@@ -18,7 +18,7 @@ import java.util.zip.Inflater;
 
 public class TableReport extends AppCompatActivity {
     private String stfr;
-    TextView income,expense,save;
+    TextView income,expense,save,Bulan;
     dbhelper DbHelper;
     private String Income,Expense;
     Integer in,ex,sum;
@@ -32,25 +32,44 @@ public class TableReport extends AppCompatActivity {
         final Intent intent = getIntent();
         String bulan = intent.getStringExtra("bulan");
         stfr = bulan;
+
         DbHelper = new dbhelper(this);
         DbHelper.open();
-
+        TextView Bulan =(TextView) findViewById(R.id.bulan);
         Button back = (Button) findViewById(R.id.back);
         income =(TextView) findViewById(R.id.income);
         expense =(TextView) findViewById(R.id.expense);
         save =(TextView) findViewById(R.id.save);
+        Bulan.setText(bulan);
         Cursor cursor = DbHelper.ReportIncome(stfr);
+
         while (cursor.moveToNext()) {
-            Income = cursor.getString(1);
-            income.setText(Income);
+            if (cursor.isNull(1)){
+                Income="0";
+                income.setText(Income);
+
+            }else{
+
+                Income = cursor.getString(1);
+                income.setText(Income);
+            }
+
         }
             Cursor cursor1 = DbHelper.ReportExpense(stfr);
+
             while (cursor1.moveToNext()){
-                Expense = cursor1.getString(1);
-            expense.setText(Expense);
+                if (cursor1.isNull(1)){
+                    Expense="0";
+                    expense.setText(Expense);
+
+                }else {
+
+                    Expense = cursor1.getString(1);
+                    expense.setText(Expense);
+                }
             }
-            in=Integer.parseInt(Income);
-            ex=Integer.parseInt(Expense);
+        in=Integer.parseInt(Income);
+        ex=Integer.parseInt(Expense);
             sum= in-ex;
             save.setText(Integer.toString(sum));
 

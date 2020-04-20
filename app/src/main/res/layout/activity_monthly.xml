@@ -12,10 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        card_view:cardBackgroundColor="@color/putih"
+        android:layout_marginTop="20dp"
+        card_view:cardBackgroundColor="@color/fbutton_color_green_sea"
         card_view:cardCornerRadius="8dp"
-        card_view:cardElevation="8dp">
+
+        card_view:cardElevation="12dp">
 
         <TextView
             android:id="@+id/number"
@@ -27,7 +28,7 @@
             android:visibility="invisible" />
 
         <TextView
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:fontFamily="sans-serif"
             android:id="@+id/date"
 

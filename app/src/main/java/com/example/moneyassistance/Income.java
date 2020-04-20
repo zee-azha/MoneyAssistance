@@ -91,16 +91,16 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
             @Override
             public void onClick(View view) {
                 if (tanggal.getText().toString().isEmpty()) {
-                    Toasty.info(getApplicationContext(), "Please Insert Date", Toast.LENGTH_SHORT, true).show();
+                    Toasty.warning(getApplicationContext(), "Please Insert Date", Toast.LENGTH_SHORT, true).show();
                 } else if (nilai.getText().toString().isEmpty()) {
-                    Toasty.info(getApplicationContext(), "Please Insert Amount", Toast.LENGTH_SHORT, true).show();
+                    Toasty.warning(getApplicationContext(), "Please Insert Amount", Toast.LENGTH_SHORT, true).show();
                 } else if (note.getText().toString().isEmpty()) {
-                    Toasty.info(getApplicationContext(), "Please Insert Note", Toast.LENGTH_SHORT, true).show();
+                    Toasty.warning(getApplicationContext(), "Please Insert Note", Toast.LENGTH_SHORT, true).show();
                 } else if (cam.getDrawable() == null) {
-                    Toasty.info(getApplicationContext(), "Please take a picture.", Toast.LENGTH_SHORT, true).show();
+                    Toasty.warning(getApplicationContext(), "Please Take a picture", Toast.LENGTH_SHORT, true).show();
                 } else {
                     saveDB(view);
-
+                    Toasty.success(getApplicationContext(), "ADD Income success", Toast.LENGTH_LONG).show();
                     nilai.setText(null);
                     tanggal.setText(null);
                     note.setText(null);

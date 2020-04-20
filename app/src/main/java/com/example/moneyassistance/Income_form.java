@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,8 +14,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -27,7 +24,7 @@ import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class ViewForm extends AppCompatActivity {
+public class Income_form extends AppCompatActivity {
 private dbhelper DbHelper;
 
 EditText Date;
@@ -89,7 +86,7 @@ private DatePickerDialog datePickerDialog;
         Back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewForm.this,List_Income.class);
+                Intent intent = new Intent(Income_form.this,List_Income.class);
                 startActivity(intent);
                 finish();
             }
@@ -137,13 +134,13 @@ private DatePickerDialog datePickerDialog;
                         String amount = Amount.getText().toString();
                         String date = Date.getText().toString();
                         DbHelper.Update_Income(Id, date, amount, subject);
-                        new SweetAlertDialog(ViewForm.this,SweetAlertDialog.SUCCESS_TYPE)
+                        new SweetAlertDialog(Income_form.this,SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Edit Successfully")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
 
-                                        Intent c = new Intent(ViewForm.this, List_Income.class);
+                                        Intent c = new Intent(Income_form.this, List_Income.class);
                                         c.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         c.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(c);
@@ -176,13 +173,13 @@ private DatePickerDialog datePickerDialog;
                     @Override
                     public void onClick(SweetAlertDialog sDialog) {
                 DbHelper.Delete_Income(Id);
-                        new SweetAlertDialog(ViewForm.this,SweetAlertDialog.SUCCESS_TYPE)
+                        new SweetAlertDialog(Income_form.this,SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText("Deleted had Successfully")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
 
-                                        Intent c = new Intent(ViewForm.this, List_Income.class);
+                                        Intent c = new Intent(Income_form.this, List_Income.class);
                                         c.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         c.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(c);

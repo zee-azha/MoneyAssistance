@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@color/putih">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
 
         >
         <ImageView
@@ -39,7 +40,7 @@
     </ListView>
     <TextView
         android:id="@+id/empty"
-        android:textColor="@color/item"
+        android:textColor="@color/putih"
         android:fontFamily="sans-serif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/putih"
     tools:context=".expense">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -48,7 +49,7 @@
             <Button
                 android:textColor="@color/item"
                 android:id="@+id/setDate"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="220dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -91,7 +92,6 @@
                 android:layout_height="67dp"
                 android:layout_marginLeft="200dp"
                 android:layout_marginTop="50dp"
-
                 android:background="@drawable/ic_add_a_photo_black_24dp"
                 android:id="@+id/take"></Button>
         </RelativeLayout>
@@ -101,7 +101,7 @@
             android:id="@+id/save"
             android:textColor="@color/putih"
             android:background="@drawable/btn"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:layout_marginLeft="120dp"
             android:layout_width="150dp"
             android:layout_height="67dp"
@@ -115,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
+            android:background="@color/fbutton_color_green_sea"
             app:itemIconTint="@drawable/color_state"
             app:itemTextColor="@drawable/color_state"
             app:menu="@menu/bottom_nav_menu" />

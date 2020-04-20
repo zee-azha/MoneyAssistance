@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/putih"
     android:layout_height="match_parent"
     tools:context=".Show_report">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -53,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
+            android:background="@color/fbutton_color_green_sea"
             app:itemIconTint="@drawable/color_state"
             app:itemTextColor="@drawable/color_state"
             app:menu="@menu/bottom_nav_menu" />

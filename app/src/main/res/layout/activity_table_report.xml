@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
         >
 
         <TextView
@@ -22,6 +22,7 @@
             android:paddingLeft="14dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
+            android:id="@+id/bulan"
             android:textColor="@color/putih"/>
 
     </LinearLayout>
@@ -40,7 +41,7 @@
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
-        card_view:cardBackgroundColor="@color/putih"
+        card_view:cardBackgroundColor="@color/fbutton_color_green_sea"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="10dp">
         <TextView
@@ -50,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
 
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
 
 
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="Total Income   :"
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
 
         <TextView
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="30dp"
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
 
         <TextView
@@ -76,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Total Expense :"
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
 
         <TextView
@@ -86,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="50dp"
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
 
         <TextView
@@ -94,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:text="Save                 :"
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
 
         <TextView
@@ -103,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="70dp"
-            android:textColor="@color/item"
+            android:textColor="@color/putih"
             android:textSize="18dp" />
     </androidx.cardview.widget.CardView>
     <Button

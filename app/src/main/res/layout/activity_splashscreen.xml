@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorsplash"
+    android:background="@color/fbutton_color_green_sea"
     android:gravity="center"
     tools:context=".splashscreen">
 
@@ -15,11 +15,11 @@
         android:layout_height="175dp"
 
         android:scaleType="fitXY"
-        android:src="@drawable/logo" />
+        android:src="@drawable/money" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MONEY ASSITANCE"
+        android:text="MONEY ASSISTANCE"
         android:textColor="@color/putih"
         android:textSize="28sp"
         android:fontFamily="casual"

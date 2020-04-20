@@ -3,20 +3,15 @@ package com.example.moneyassistance;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-
-import java.util.zip.Inflater;
 
 public class List_Income extends AppCompatActivity {
     private dbhelper Dbhelper;
@@ -47,7 +42,7 @@ public class List_Income extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
                 TextView noTextView = (TextView) view.findViewById(R.id.number);
                 String number = noTextView.getText().toString();
-                Intent modify_intent = new Intent(getApplicationContext(), ViewForm.class);
+                Intent modify_intent = new Intent(getApplicationContext(), Income_form.class);
                 modify_intent.putExtra("_id", number);
                 startActivity(modify_intent);
 

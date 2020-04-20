@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/putih"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
         >
 
         <TextView
@@ -31,7 +32,7 @@
         android:layout_width="208dp"
         android:layout_height="195dp"
         android:layout_marginTop="250dp"
-        card_view:cardBackgroundColor="@color/colorPrimary"
+        card_view:cardBackgroundColor="@color/fbutton_color_green_sea"
         card_view:cardCornerRadius="8dp"
         card_view:cardElevation="8dp">
 
@@ -58,7 +59,7 @@
         android:layout_width="210dp"
         android:layout_height="195dp"
         android:layout_marginTop="250dp"
-        card_view:cardBackgroundColor="@color/colorPrimary"
+        card_view:cardBackgroundColor="@color/fbutton_color_green_sea"
         card_view:cardCornerRadius="8dp"
         android:layout_marginLeft="210dp"
         card_view:cardElevation="8dp">
@@ -93,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
+            android:background="@color/fbutton_color_green_sea"
             app:itemIconTint="@drawable/color_state"
             app:itemTextColor="@drawable/color_state"
             app:menu="@menu/bottom_nav_menu" />

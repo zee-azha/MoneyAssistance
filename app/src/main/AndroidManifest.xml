@@ -11,20 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TableReport"></activity>
-        <activity android:name=".monthly" />
-        <activity android:name=".Show_report" />
+        <activity android:name=".TableReport"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".monthly"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Show_report"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Expense_form"
             android:screenOrientation="portrait" />
         <activity
             android:name=".View_Expense"
             android:screenOrientation="portrait" />
-        <activity android:name=".List_Expense" />
-        <activity android:name=".ViewForm" />
-        <activity android:name=".List_Income" />
-        <activity android:name=".View_Income" />
-        <activity android:name=".expense" />
+        <activity android:name=".List_Expense"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Income_form"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".List_Income"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".View_Income"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".expense"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

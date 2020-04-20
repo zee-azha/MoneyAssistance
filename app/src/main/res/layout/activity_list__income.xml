@@ -7,13 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
 
         >
         <ImageView
             android:id="@+id/back"
             android:layout_marginTop="10dp"
             android:layout_width="35dp"
+
             android:layout_height="30dp"
             android:src="@drawable/ic_arrow_back_black_24dp"></ImageView>
         <TextView
@@ -22,11 +23,11 @@
             android:layout_height="50dp"
             android:text="Income View"
             android:textSize="24dp"
+            android:layout_gravity="center|center_horizontal"
             android:fontFamily="sans-serif"
             android:paddingLeft="14dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:layout_gravity="center|center_horizontal"
             android:textColor="@color/putih"/>
     </LinearLayout>
     <ListView
@@ -39,7 +40,7 @@
     </ListView>
     <TextView
         android:id="@+id/empty"
-        android:textColor="@color/item"
+        android:textColor="@color/putih"
         android:fontFamily="sans-serif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

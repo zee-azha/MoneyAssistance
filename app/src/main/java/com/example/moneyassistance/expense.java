@@ -34,6 +34,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class expense extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -88,16 +90,16 @@ public class expense extends AppCompatActivity implements BottomNavigationView.O
             @Override
             public void onClick(View view) {
                 if (tanggal.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please Insert Date", Toast.LENGTH_LONG).show();
+                    Toasty.warning(getApplicationContext(), "Please Insert Date", Toast.LENGTH_SHORT, true).show();
                 } else if (nilai.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please Insert Amount ", Toast.LENGTH_LONG).show();
+                    Toasty.warning(getApplicationContext(), "Please Insert Amount", Toast.LENGTH_SHORT, true).show();
                 } else if (note.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please Insert Note ", Toast.LENGTH_LONG).show();
+                    Toasty.warning(getApplicationContext(), "Please Insert Note", Toast.LENGTH_SHORT, true).show();
                 } else if (cam.getDrawable() == null) {
-                    Toast.makeText(getApplicationContext(), "Please Insert Reciept picture ", Toast.LENGTH_LONG).show();
+                    Toasty.warning(getApplicationContext(), "Please Take a picture", Toast.LENGTH_SHORT, true).show();
                 } else {
                     saveDB(view);
-                    Toast.makeText(getApplicationContext(), "ADD Income success", Toast.LENGTH_LONG).show();
+                    Toasty.success(getApplicationContext(), "ADD Expense success", Toast.LENGTH_LONG).show();
                     nilai.setText(null);
                     tanggal.setText(null);
                     note.setText(null);

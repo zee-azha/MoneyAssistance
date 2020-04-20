@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary"
+        android:background="@color/fbutton_color_green_sea"
         >
         <ImageView
             android:id="@+id/back"
