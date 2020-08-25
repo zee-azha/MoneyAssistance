@@ -3,11 +3,13 @@ package com.example.moneyassistance;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,15 +20,15 @@ import androidx.fragment.app.Fragment;
 
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-     CardView income;
-    CardView expense;
+     RelativeLayout income;
+    RelativeLayout expense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      income = (CardView) findViewById(R.id.income);
-        expense = (CardView) findViewById(R.id.expense);
+      income = (RelativeLayout) findViewById(R.id.income);
+        expense = (RelativeLayout) findViewById(R.id.expense);
 
         //loading the default fragment
         loadFragment(new frame_menu());

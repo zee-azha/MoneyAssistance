@@ -27,19 +27,17 @@
     </LinearLayout>
 
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:id="@+id/income"
-        android:layout_width="208dp"
+        android:layout_width="wrap_content"
         android:layout_height="195dp"
         android:layout_marginTop="250dp"
-        card_view:cardBackgroundColor="@color/fbutton_color_green_sea"
-        card_view:cardCornerRadius="8dp"
-        card_view:cardElevation="8dp">
+        android:background="@color/fbutton_color_green_sea">
 
         <ImageView
             android:id="@+id/rev"
-            android:layout_width="166dp"
-            android:layout_height="132dp"
+            android:layout_width="180dp"
+            android:layout_height="130dp"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:src="@drawable/ic_local_atm_white_24dp" />
@@ -48,25 +46,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rev"
-            android:layout_gravity="center|bottom"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
             android:text="Income "
+            android:layout_marginTop="-10dp"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
-    </androidx.cardview.widget.CardView>
-    <androidx.cardview.widget.CardView
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/expense"
-        android:layout_width="210dp"
+        android:layout_width="wrap_content"
         android:layout_height="195dp"
         android:layout_marginTop="250dp"
-        card_view:cardBackgroundColor="@color/fbutton_color_green_sea"
-        card_view:cardCornerRadius="8dp"
-        android:layout_marginLeft="210dp"
-        card_view:cardElevation="8dp">
+       android:layout_marginLeft="190dp"
+        android:background="@color/fbutton_color_green_sea"
+        >
 
         <ImageView
-
-            android:layout_width="169dp"
+            android:id="@+id/ex"
+            android:layout_width="200dp"
             android:layout_height="118dp"
             android:layout_centerInParent="true"
             android:layout_gravity="center"
@@ -75,14 +73,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/rev"
-            android:layout_gravity="center|bottom"
-            android:layout_marginTop="10dp"
+            android:layout_below="@+id/ex"
+           android:layout_marginLeft="50dp"
+            android:layout_marginTop="-10dp"
             android:text="Expense "
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
 
 

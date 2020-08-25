@@ -53,4 +53,7 @@ public class List_Expense extends AppCompatActivity {
         });
 
     }
+    public void onBackPressed() {
+
+    }
 }

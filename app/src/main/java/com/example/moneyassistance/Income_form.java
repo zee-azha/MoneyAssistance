@@ -50,7 +50,7 @@ private DatePickerDialog datePickerDialog;
         setdate =(Button) findViewById(R.id.setDate);
         Edit =(Button) findViewById(R.id.edit);
         Delete =(Button) findViewById(R.id.delete);
-        dateFormatter = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         DbHelper.getReadableDatabase();
         Intent intent = getIntent();
         String num = intent.getStringExtra("_id");

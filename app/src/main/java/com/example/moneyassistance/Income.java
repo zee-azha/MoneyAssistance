@@ -79,7 +79,7 @@ public class Income extends AppCompatActivity implements BottomNavigationView.On
         trans = (Button) findViewById(R.id.save);
         take = (Button) findViewById(R.id.take);
         setdate = (Button) findViewById(R.id.setDate);
-        dateFormatter = new SimpleDateFormat("YYYY-MM-dd", Locale.US);
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
         //Navigation
         BottomNavigationView navigation = findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(this);

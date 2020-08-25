@@ -63,4 +63,7 @@ public class List_Income extends AppCompatActivity {
         });
 
     }
+    public void onBackPressed() {
+        
+    }
 }
